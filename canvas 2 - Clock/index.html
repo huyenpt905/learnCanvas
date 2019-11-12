@@ -20,11 +20,12 @@
     function drawClock() {
         drawFace(ctx, radius);
         drawNumberbers(ctx, radius);
-        drawTime(ctx, radius);
+        //drawTime(ctx, radius);
+        drawHand();
     }
 
     function drawFace(ctx, radius) {
-        var grad;
+        var gradient ;
 
         //vẽ hình tròn trắng bán kính bằng radius tâm tại vị trí (0,0) mới
         ctx.beginPath();
@@ -33,11 +34,11 @@
         ctx.fill();
 
         //tạo Gradient
-        grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
-        grad.addColorStop(0, '#d40606');
-        grad.addColorStop(0.5, 'white');
-        grad.addColorStop(1, '#d40606');
-        ctx.strokeStyle = grad;
+        gradient = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
+        gradient.addColorStop(0, '#d40606');
+        gradient.addColorStop(0.5, 'white');
+        gradient.addColorStop(1, '#d40606');
+        ctx.strokeStyle = gradient ;
         ctx.lineWidth = radius*0.1;
         ctx.stroke();
 
@@ -85,22 +86,19 @@
         drawHand(ctx, second, radius*0.9, radius*0.02);
     }
 
-    function drawHand(ctx, pos, length, width) {
+    // Vẽ kim đồng hồ
+    function drawHand(ctx, position, length, width) {
         ctx.beginPath();
         ctx.lineWidth = width;
         ctx.lineCap = "round";
         ctx.moveTo(0,0);
-        ctx.rotate(pos);
+        ctx.rotate(position);
         ctx.lineTo(0, -length);
         ctx.stroke();
-        ctx.rotate(-pos);
+        ctx.rotate(-position);
     }
-//Trước khi giới thiệu thao tác javascript để vẽ 1 số đường căn bản trên canvas, mình giới thiệu 1 số thuộc tính và phương thức về Color, Styles và Shadows cho các thành phần vẽ trên canvas như thế nào nhé:
 
-
-
-
- </script>
+</script>
 </body>
 
 </html>
